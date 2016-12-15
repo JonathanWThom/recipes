@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215173835) do
+ActiveRecord::Schema.define(version: 20161215201506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.index ["name"], name: "index_categories_on_name", using: :btree
   end
 
   create_table "categories_recipes", force: :cascade do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161215173835) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
+    t.index ["name"], name: "index_ingredients_on_name", using: :btree
   end
 
   create_table "ingredients_recipes", force: :cascade do |t|
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20161215173835) do
     t.string  "name"
     t.string  "instructions"
     t.integer "rating"
+    t.index ["name"], name: "index_recipes_on_name", using: :btree
   end
 
 end
